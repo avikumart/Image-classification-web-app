@@ -2,7 +2,6 @@ import tensorflow as tf
 import streamlit as st
 from PIL import Image, ImageOps
 import numpy as np
-import cv2
 import pandas as pd
 
 # base model for feature map prediction of image input
@@ -32,8 +31,7 @@ def import_and_predict(image_input, conv_base, model):
     size = (150,150)
     image = ImageOps.fit(image_input, size, Image.ANTIALIAS)
     image = np.asarray(image, dtype=np.float32)
-    img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    img = np.expand_dims(img, axis=0)
+    img = np.expand_dims(image, axis=0)
     img /= 255.
     
     # prediction output of the base model
