@@ -20,7 +20,7 @@ st.write("""
 st.write("This is the most basic image classification web-app to predict the class of images"
         )
 
-file = st.file_uploader("Please upload an natural image file", type=['jpg','png'])
+file = st.file_uploader("Please upload a natural image file", type=['jpg','png'])
 
 
 def import_and_predict(image_input, conv_base, model):
@@ -30,8 +30,8 @@ def import_and_predict(image_input, conv_base, model):
     '''
     size = (150,150)
     image = ImageOps.fit(image_input, size, Image.ANTIALIAS)
-    image = np.asarray(image, dtype=np.float32)
     image = image.convert('RGB')
+    image = np.asarray(image, dtype=np.float32)
     img = np.expand_dims(image, axis=0)
     img /= 255.
     
