@@ -31,6 +31,7 @@ def import_and_predict(image_input, conv_base, model):
     size = (150,150)
     image = ImageOps.fit(image_input, size, Image.ANTIALIAS)
     image = np.asarray(image, dtype=np.float32)
+    image = image.convert('RGB')
     img = np.expand_dims(image, axis=0)
     img /= 255.
     
