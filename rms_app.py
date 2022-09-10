@@ -2,7 +2,6 @@ import tensorflow as tf
 import streamlit as st
 from PIL import Image, ImageOps
 import numpy as np
-import pandas as pd
 
 # base model for feature map prediction of image input
 conv_base = tf.keras.applications.vgg16.VGG16(weights='imagenet',
@@ -62,9 +61,4 @@ else:
     else:
         st.write("It is a street image class")
     
-    prediction_probability = pd.DataFrame({"Classes":['building','forest','glacier','mountain','sea','street'],
-                                        "Probability": prediction.ravel()})
-    
-    st.text("Prediction (0:building, 1:forest, 2:glacier, 3:mountain, 4:sea, 5:street)")
-    st.write("Prediction_probability of an image")
-    st.write(prediction_probability)   
+    st.text("Prediction (0:building, 1:forest, 2:glacier, 3:mountain, 4:sea, 5:street)") 
